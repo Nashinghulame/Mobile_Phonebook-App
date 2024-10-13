@@ -1,18 +1,49 @@
-## Getting Started
+// Insert Contact
+FUNCTION insertContact(name, phoneNumber)
+  IF phonebook is empty THEN
+    CREATE a new contact with name and phoneNumber
+    ADD contact to phonebook
+  ELSE
+    FIND the last contact in the phonebook
+    ADD new contact after the last contact
+  END IF
+END FUNCTION
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+// Search Contact
+FUNCTION searchContact(name OR phoneNumber)
+  FOR EACH contact IN phonebook
+    IF contact's name matches the input name OR contact's phoneNumber matches the input phoneNumber THEN
+      RETURN contact's details
+    END IF
+  END FOR
+  RETURN "Contact not found"
+END FUNCTION
 
-## Folder Structure
+// Display all contacts
+FUNCTION displayContacts()
+  FOR EACH contact IN phonebook
+    PRINT contact's details
+  END FOR
+END FUNCTION
 
-The workspace contains two folders by default, where:
+// Delete Contact
+FUNCTION deleteContact(name OR phoneNumber)
+  FOR EACH contact IN phonebook
+    IF contact's name matches the input name OR contact's phoneNumber matches the input phoneNumber THEN
+      REMOVE contact from phonebook
+      RETURN "Contact deleted"
+    END IF
+  END FOR
+  RETURN "Contact not found"
+END FUNCTION
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+// Update Contact
+FUNCTION updateContact(name OR phoneNumber, updatedDetails)
+  FOR EACH contact IN phonebook
+    IF contact's name matches the input name OR contact's phoneNumber matches the input phoneNumber THEN
+      UPDATE contact's details with updatedDetails
+      RETURN "Contact updated"
+    END IF
+  END FOR
+  RETURN "Contact not found"
+END FUNCTION
